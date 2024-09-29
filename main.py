@@ -47,7 +47,7 @@ rt,gt,bt = 5,5,5
 
 #main loop↓
 while True:
- pygame.mixer.music.set_volume(v)
+	pygame.mixer.music.set_volume(v)
 	tela.fill((r, g, b))
 	titulo = f'{caption[indice]}'
 	texto = fonte.render(titulo, True, (rt,gt,bt))
