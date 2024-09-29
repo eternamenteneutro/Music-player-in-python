@@ -31,7 +31,7 @@ indice=randint(0, len(musica))
 
 pygame.mixer.music.load(musica[indice])
 pygame.mixer.music.play()
-pygame.mixer.music.set_volume(0.5)
+
 coverBack = pygame.image.load(imagem[indice])
 cover = pygame.transform.scale(coverBack, (tam, tam))
 
@@ -44,7 +44,10 @@ v=0.5
 
 r,g,b = 255, 255, 255
 rt,gt,bt = 5,5,5
+
+#main loop↓
 while True:
+ pygame.mixer.music.set_volume(v)
 	tela.fill((r, g, b))
 	titulo = f'{caption[indice]}'
 	texto = fonte.render(titulo, True, (rt,gt,bt))
@@ -66,10 +69,10 @@ while True:
 				pygame.mixer.music.pause()
 				
 			if control_vol_plus.collidepoint(event.pos):
-				pygame.mixer.music.set_volume(v+0.1)
+				v=v+0.1
 				
 			if control_vol_minus.collidepoint(event.pos):
-				pygame.mixer.music.set_volume(v-0.1)
+				v=v-0.1
 				
 			if control_tema.collidepoint(event.pos):
 				if r==255:
