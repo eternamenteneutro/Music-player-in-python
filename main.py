@@ -8,14 +8,14 @@ pygame.init()
 pygame.mixer.init()
 
 #
-fonte = pygame.font.SysFont('arial', 50, True, False)
+fonte = pygame.font.SysFont('arial', 20, True, False)
 #
 
 
-tela = pygame.display.set_mode((1440, 1080))
+tela = pygame.display.set_mode((1280, 720))
 
 #constante↓
-tam = tela.get_width()-200
+tam = 1080
 
 #listas com as informações das musicas e dos botoes de play
 controles = ['media/img/play.png', 'media/img/pause.png', 'media/img/plus.png', 'media/img/minus.png', 'media/img/tema.png','media/img/play1.png', 'media/img/pause1.png', 'media/img/plus1.png', 'media/img/minus1.png', 'media/img/tema1.png']
@@ -33,7 +33,7 @@ pygame.mixer.music.load(musica[indice])
 pygame.mixer.music.play()
 
 coverBack = pygame.image.load(imagem[indice])
-cover = pygame.transform.scale(coverBack, (tam, tam))
+cover = pygame.transform.scale(coverBack, (400, 400))
 
 play = pygame.image.load(controles[0])
 pause = pygame.image.load(controles[1])
@@ -52,11 +52,11 @@ while True:
 	titulo = f'{caption[indice]}'
 	texto = fonte.render(titulo, True, (rt,gt,bt))
 	
-	control_play = pygame.draw.rect(tela, (r,g,b), (tam-750,tam+400, 60,60))
-	control_pause = pygame.draw.rect(tela, (r,g,b), (tam-525,tam+400, 60,60))
-	control_vol_plus = pygame.draw.rect(tela, (r,g,b), (tam-325,tam+400, 60,60))
-	control_vol_minus = pygame.draw.rect(tela, (r,g,b), (tam-100,tam+400, 60,60)) 
-	control_tema = pygame.draw.rect(tela, (r,g,b), (tam+80, tam+380, 80,80))
+	control_play = pygame.draw.rect(tela, (r,g,b), (515,580, 53,53))
+	control_pause = pygame.draw.rect(tela, (r,g,b), (615,580, 53,53))
+	control_vol_plus = pygame.draw.rect(tela, (r,g,b), (715,580, 53,53))
+	control_vol_minus = pygame.draw.rect(tela, (r,g,b), (815,580, 53,53))
+	control_tema = pygame.draw.rect(tela, (r,g,b), (1000, 580, 70,70))
 	
 
 	for event in pygame.event.get():
@@ -94,12 +94,14 @@ while True:
 					tema = pygame.image.load(controles[4])
 			
 	
-	tela.blit(play, (tam-750,tam+400))
-	tela.blit(pause, (tam-525,tam+400))
-	tela.blit(plus, (tam-325,tam+400))
-	tela.blit(minus, (tam-100,tam+400))
-	tela.blit(tema, (tam+80, tam+380))
+	tela.blit(play, (515,580))
+	tela.blit(pause, (615,580))
+	tela.blit(plus, (715,580))
+	tela.blit(minus, (815,580))
+	tela.blit(tema, (1000, 580))
 	
-	tela.blit(texto, (tam-750, tam+200))
-	tela.blit(cover, (tam-800, tam-800))
+	tela.blit(texto, (515, 480))
+	tela.blit(cover, ((tela.get_width()-250)/2, 60))
 	pygame.display.update()
+
+pygame.quit()
